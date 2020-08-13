@@ -39,7 +39,8 @@ resource "azurerm_network_interface" "DC01_nic" {
   ip_configuration {
     name                          = "DC01_nic_conf"
     subnet_id                     = azurerm_subnet.AD-Subnet.id
-    private_ip_address_allocation = "Dynamic"
+    private_ip_address_allocation = "static"
+    private_ip_address            = "10.10.10.11"
   }
 }
 
@@ -75,8 +76,9 @@ resource "azurerm_network_interface" "ADConnect_nic" {
   ip_configuration {
     name                          = "ADConnect_nic_conf"
     subnet_id                     = azurerm_subnet.AD-Subnet.id
-    private_ip_address_allocation = "10.10.10.15"
-  }
+    private_ip_address_allocation = "static"
+    private_ip_address            = "10.10.10.15"
+    }
 }
 
 # Create virtual machine ADConnect
